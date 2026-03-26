@@ -56,11 +56,3 @@ main {
     margin: 20px auto 0 auto; /* Margem em cima para não colar no texto */
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    width: 100%;
-    margin-top: auto; /* Garante que fique no final por causa do flexbox no body */
-}

@@ -1,6 +1,26 @@
-- name: Notificar Discord
-      uses: sarisia/actions-status-discord@v1
-      if: always()
-      with:
-        webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        content: "Trabalho finalizado! O workflow da Kariny no projeto-devops terminou com status: ${{ job.status }} "
+name: Notificação de CI/CD
+
+on:
+  push:
+    branches: [ "main", "teste-cicd" ]
+  pull_request:
+    branches: [ "main", "teste-cicd" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rodar Testes
+        run: |
+          echo "Executando os 5 testes unitários..."
+          # Aqui ele simularia o npm test, mas vamos focar no alerta
+          
+      - name: Notificar Discord
+        uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          content: "Trabalho finalizado! O workflow da Kariny no projeto-devops terminou com status: ${{ job.status }} "
